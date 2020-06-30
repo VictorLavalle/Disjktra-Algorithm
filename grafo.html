@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 19.05.10.3187 GPL Edition - win64">
+<meta name="description" content="Summary description for {GRAFO}."/>
+<meta name="author" content="Eberth Mezeta & Victor Lavalle"/>
+<meta name="date" content="$Date$"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>grafo Text</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="grafo_chart.html">Chart</a>
+<a class="nav class" href="grafo_links.html">Relations</a>
+<span class="nav class selected">Text</span>
+<a class="nav class" href="grafo_flat.html">Flat</a>
+<span class="nav class goto">Go to: <input name="c" value="grafo"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Summary description for </span><span class="esymbol">{</span><a class="eclass" href="../dijsktra/grafo.html">GRAFO</a><span class="esymbol">}</span><span class="estring">.&quot;</span>
+	<span class="eitag">author</span><span class="esymbol">:</span> <span class="estring">&quot;Eberth Mezeta &#38; Victor Lavalle&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> 
+	<a class="eclass" href="../dijsktra/grafo.html">GRAFO</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../dijsktra/grafo.html#f_constructor">constructor</a>
+
+<span class="ekeyword">feature</span> 
+
+	<a name="f_vertices"></a><a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../dijsktra/vertice.html">VERTICE</a><span class="esymbol">]</span>
+
+	<a name="f_maxver"></a><a class="efeature" href="../dijsktra/grafo.html#f_maxver">maxver</a><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+
+	<a name="f_matriz"></a><a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">]</span><span class="esymbol">]</span>
+
+	<a name="f_numver"></a><a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+	
+<span class="ekeyword">feature</span> 
+
+	<a name="f_constructor"></a><a class="efeature" href="../dijsktra/grafo.html#f_constructor">constructor</a> <span class="esymbol">(</span><span class="elocal">maximo</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">)</span>
+		<span class="ekeyword">local</span>
+			<span class="elocal">arr</span><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">]</span>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">create</span> <a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_make_empty">make_empty</a>
+			<a class="efeature" href="../dijsktra/grafo.html#f_maxver">maxver</a> <span class="esymbol">:=</span> <span class="elocal">maximo</span>
+			<span class="ekeyword">create</span> <a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_make_empty">make_empty</a>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <span class="elocal">maximo</span>
+			<span class="ekeyword">loop</span>
+				<span class="ekeyword">create</span> <span class="elocal">arr</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_make_filled">make_filled</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="enumber">0</span><span class="esymbol">,</span> <span class="enumber">1</span><span class="esymbol">,</span> <span class="elocal">maximo</span><span class="esymbol">)</span>
+				<a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_force">force</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">arr</span><span class="esymbol">,</span> <span class="elocal">i</span><span class="esymbol">)</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+			<a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a> <span class="esymbol">:=</span> <span class="enumber">0</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_getarray"></a><a class="efeature" href="../dijsktra/grafo.html#f_getarray">getarray</a><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../dijsktra/vertice.html">VERTICE</a><span class="esymbol">]</span>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a>
+		<span class="ekeyword">end</span>
+
+	<a name="f_getmaxver"></a><a class="efeature" href="../dijsktra/grafo.html#f_getmaxver">getmaxver</a><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_maxver">maxver</a>
+		<span class="ekeyword">end</span>
+
+	<a name="f_getmatriz"></a><a class="efeature" href="../dijsktra/grafo.html#f_getmatriz">getmatriz</a><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">]</span><span class="esymbol">]</span>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a>
+		<span class="ekeyword">end</span>
+
+	<a name="f_getnumver"></a><a class="efeature" href="../dijsktra/grafo.html#f_getnumver">getnumver</a><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+		<span class="ekeyword">end</span>
+
+	<a name="f_insertarvertice"></a><a class="efeature" href="../dijsktra/grafo.html#f_insertarvertice">insertarvertice</a> <span class="esymbol">(</span><span class="elocal">n</span><span class="esymbol">:</span> <a class="eclass" href="../elks/string_8.html">STRING_8</a><span class="esymbol">)</span>
+		<span class="ekeyword">local</span>
+			<span class="elocal">v</span><span class="esymbol">:</span> <a class="eclass" href="../dijsktra/vertice.html">VERTICE</a>
+		<span class="ekeyword">do</span>
+			<a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">create</span> <span class="elocal">v</span><span class="edot">.</span><a class="efeature" href="../dijsktra/vertice.html#f_contructor">contructor</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">n</span><span class="esymbol">,</span> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a><span class="esymbol">)</span>
+			<a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_force">force</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">v</span><span class="esymbol">,</span> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a><span class="esymbol">)</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_adyacente"></a><a class="efeature" href="../dijsktra/grafo.html#f_adyacente">adyacente</a> <span class="esymbol">(</span><span class="elocal">v1</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">;</span> <span class="elocal">v2</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../elks/boolean.html">BOOLEAN</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">if</span> <span class="esymbol">(</span><a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">v1</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">v2</span><span class="esymbol">)</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <span class="enumber">0</span><span class="esymbol">)</span> <span class="ekeyword">then</span>
+				<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <span class="ekeyword">True</span>
+			<span class="ekeyword">end</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_insetararco"></a><a class="efeature" href="../dijsktra/grafo.html#f_insetararco">insetararco</a> <span class="esymbol">(</span><span class="elocal">v1</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">;</span> <span class="elocal">v2</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">;</span> <span class="elocal">peso</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">)</span>
+		<span class="ekeyword">do</span>
+			<a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">v1</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">v2</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <span class="elocal">peso</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_existe"></a><a class="efeature" href="../dijsktra/grafo.html#f_existe">existe</a> <span class="esymbol">(</span><span class="elocal">v</span><span class="esymbol">:</span> <a class="eclass" href="../dijsktra/vertice.html">VERTICE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../elks/boolean.html">BOOLEAN</a>
+		<span class="ekeyword">local</span>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">bandera</span><span class="esymbol">:</span> <a class="eclass" href="../elks/boolean.html">BOOLEAN</a>
+		<span class="ekeyword">do</span>
+			<span class="elocal">bandera</span> <span class="esymbol">:=</span> <span class="ekeyword">False</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<span class="ekeyword">if</span> <span class="esymbol">(</span><a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a><span class="edot">.</span><a class="efeature" href="../dijsktra/vertice.html#f_getnombre">getnombre</a> <span class="esymbol">~</span> <span class="elocal">v</span><span class="edot">.</span><a class="efeature" href="../dijsktra/vertice.html#f_getnombre">getnombre</a><span class="esymbol">)</span> <span class="ekeyword">then</span>
+					<span class="elocal">bandera</span> <span class="esymbol">:=</span> <span class="ekeyword">True</span>
+				<span class="ekeyword">end</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <span class="elocal">bandera</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_imprimirmatriz"></a><a class="efeature" href="../dijsktra/grafo.html#f_imprimirmatriz">imprimirmatriz</a>
+		<span class="ekeyword">local</span>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">j</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;%T&quot; <a class="esymbol" href="../elks/string_8.html#f_plus">+</a> <a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">i</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../dijsktra/vertice.html#f_getnombre">getnombre</a><span class="esymbol">)</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+			<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;%N&quot;<span class="esymbol">)</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span><a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">i</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../dijsktra/vertice.html#f_getnombre">getnombre</a> <a class="esymbol" href="../elks/string_8.html#f_plus">+</a> &quot;%T&quot;<span class="esymbol">)</span>
+				<span class="ekeyword">from</span>
+					<span class="elocal">j</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+				<span class="ekeyword">until</span>
+					<span class="elocal">j</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+				<span class="ekeyword">loop</span>
+					<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span><a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">i</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">j</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../elks/integer_32_ref.html#f_out">out</a> <a class="esymbol" href="../elks/string_8.html#f_plus">+</a> &quot;%T&quot;<span class="esymbol">)</span>
+					<span class="elocal">j</span> <span class="esymbol">:=</span> <span class="elocal">j</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+				<span class="ekeyword">end</span>
+				<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;%N&quot;<span class="esymbol">)</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_imprimivertices"></a><a class="efeature" href="../dijsktra/grafo.html#f_imprimivertices">imprimivertices</a>
+		<span class="ekeyword">local</span>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span><a class="efeature" href="../dijsktra/grafo.html#f_vertices">vertices</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">i</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../dijsktra/vertice.html#f_to_string">to_string</a><span class="esymbol">)</span>
+				<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;%N&quot;<span class="esymbol">)</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_dijktra"></a><a class="efeature" href="../dijsktra/grafo.html#f_dijktra">dijktra</a> <span class="esymbol">(</span><span class="elocal">s</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">;</span> <span class="elocal">f</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">)</span>
+		<span class="ekeyword">local</span>
+			<span class="elocal">visto</span><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/boolean.html">BOOLEAN</a><span class="esymbol">]</span>
+			<span class="elocal">distancia</span><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">]</span>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">v</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">vis</span><span class="esymbol">:</span> <a class="eclass" href="../elks/boolean.html">BOOLEAN</a>
+			<span class="elocal">j</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">n</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="ekeyword">create</span> <span class="elocal">visto</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_make_filled">make_filled</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="ekeyword">False</span><span class="esymbol">,</span> <span class="enumber">1</span><span class="esymbol">,</span> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a><span class="esymbol">)</span>
+			<span class="ekeyword">create</span> <span class="elocal">distancia</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_make_filled">make_filled</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="enumber">0</span><span class="esymbol">,</span> <span class="enumber">1</span><span class="esymbol">,</span> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a><span class="esymbol">)</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<span class="ekeyword">if</span> <span class="esymbol">(</span><a class="ekeyword" href="../elks/boolean.html#f_negated">not</a> <a class="efeature" href="../dijsktra/grafo.html#f_adyacente">adyacente</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">s</span><span class="esymbol">,</span> <span class="elocal">i</span><span class="esymbol">)</span><span class="esymbol">)</span> <span class="ekeyword">then</span>
+					<span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <span class="enumber">-1</span>
+				<span class="ekeyword">else</span>
+					<span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">s</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">i</span><span class="esymbol">)</span>
+				<span class="ekeyword">end</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+			<span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">s</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <span class="enumber">0</span>
+			<span class="elocal">visto</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">s</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <span class="ekeyword">True</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">n</span> <span class="esymbol">:=</span> <span class="enumber">0</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">n</span> <span class="esymbol">=</span> <span class="enumber">1</span>
+			<span class="ekeyword">loop</span>
+				<span class="elocal">v</span> <span class="esymbol">:=</span> <a class="efeature" href="../dijsktra/grafo.html#f_minimo">minimo</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">visto</span><span class="esymbol">,</span> <span class="elocal">distancia</span><span class="esymbol">)</span>
+				<span class="elocal">visto</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">v</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <span class="ekeyword">True</span>
+				<span class="ekeyword">from</span>
+					<span class="elocal">j</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+				<span class="ekeyword">until</span>
+					<span class="elocal">j</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+				<span class="ekeyword">loop</span>
+					<span class="ekeyword">if</span> <span class="esymbol">(</span><span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">j</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <span class="esymbol">(</span><span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">v</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">v</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">j</span><span class="esymbol">)</span><span class="esymbol">)</span><span class="esymbol">)</span> <span class="ekeyword">then</span>
+						<span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">j</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">:=</span> <span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">v</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <a class="efeature" href="../dijsktra/grafo.html#f_matriz">matriz</a><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">v</span><span class="esymbol">)</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">j</span><span class="esymbol">)</span>
+					<span class="ekeyword">end</span>
+					<span class="elocal">j</span> <span class="esymbol">:=</span> <span class="elocal">j</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+				<span class="ekeyword">end</span>
+				<span class="ekeyword">if</span> <span class="esymbol">(</span><a class="efeature" href="../dijsktra/grafo.html#f_todov">todov</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">visto</span><span class="esymbol">)</span><span class="esymbol">)</span> <span class="ekeyword">then</span>
+					<span class="elocal">n</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+				<span class="ekeyword">end</span>
+			<span class="ekeyword">end</span>
+			<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;&gt;&gt;EL PESO DE LA RUTA MAS CORTA ES: &quot; <a class="esymbol" href="../elks/string_8.html#f_plus">+</a> <span class="elocal">distancia</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">f</span><a class="esymbol" href="../elks/array.html#f_item">]</a><span class="edot">.</span><a class="efeature" href="../elks/integer_32_ref.html#f_out">out</a><span class="esymbol">)</span>
+			<a class="efeature" href="../elks/any.html#f_print">print</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;%N&gt;&gt;RECORRIDO:&quot;<span class="esymbol">)</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_minimo"></a><a class="efeature" href="../dijsktra/grafo.html#f_minimo">minimo</a> <span class="esymbol">(</span><span class="elocal">a</span><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/boolean.html">BOOLEAN</a><span class="esymbol">]</span><span class="esymbol">;</span> <span class="elocal">d</span><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/integer_32.html">INTEGER_32</a><span class="esymbol">]</span><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">local</span>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">trono</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+			<span class="elocal">index</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="elocal">trono</span> <span class="esymbol">:=</span> <span class="enumber">9999</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<span class="ekeyword">if</span> <span class="esymbol">(</span><span class="elocal">d</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <a class="esymbol" href="../elks/integer_32.html#f_is_less">&lt;</a> <span class="elocal">trono</span> <a class="ekeyword" href="../elks/boolean.html#f_conjuncted">and</a> <span class="esymbol">(</span><span class="elocal">a</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <span class="esymbol">=</span> <span class="ekeyword">False</span><span class="esymbol">)</span> <a class="ekeyword" href="../elks/boolean.html#f_conjuncted">and</a> <span class="elocal">d</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <span class="enumber">0</span><span class="esymbol">)</span> <span class="ekeyword">then</span>
+					<span class="elocal">trono</span> <span class="esymbol">:=</span> <span class="elocal">d</span> <a class="esymbol" href="../elks/array.html#f_item">[</a><span class="elocal">i</span><a class="esymbol" href="../elks/array.html#f_item">]</a>
+					<span class="elocal">index</span> <span class="esymbol">:=</span> <span class="elocal">i</span>
+				<span class="ekeyword">end</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <span class="elocal">index</span>
+		<span class="ekeyword">end</span>
+
+	<a name="f_todov"></a><a class="efeature" href="../dijsktra/grafo.html#f_todov">todov</a> <span class="esymbol">(</span><span class="elocal">an</span><span class="esymbol">:</span> <a class="eclass" href="../elks/array.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../elks/boolean.html">BOOLEAN</a><span class="esymbol">]</span><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../elks/boolean.html">BOOLEAN</a>
+		<span class="ekeyword">local</span>
+			<span class="elocal">ban</span><span class="esymbol">:</span> <a class="eclass" href="../elks/boolean.html">BOOLEAN</a>
+			<span class="elocal">i</span><span class="esymbol">:</span> <a class="eclass" href="../elks/integer_32.html">INTEGER_32</a>
+		<span class="ekeyword">do</span>
+			<span class="elocal">ban</span> <span class="esymbol">:=</span> <span class="ekeyword">True</span>
+			<span class="ekeyword">from</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="enumber">1</span>
+			<span class="ekeyword">until</span>
+				<span class="elocal">i</span> <a class="esymbol" href="../elks/comparable.html#f_is_greater">&gt;</a> <a class="efeature" href="../dijsktra/grafo.html#f_numver">numver</a>
+			<span class="ekeyword">loop</span>
+				<span class="ekeyword">if</span> <span class="esymbol">(</span><span class="elocal">an</span><span class="edot">.</span><a class="efeature" href="../elks/array.html#f_item">item</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">i</span><span class="esymbol">)</span> <span class="esymbol">=</span> <span class="ekeyword">False</span><span class="esymbol">)</span> <span class="ekeyword">then</span>
+					<span class="elocal">ban</span> <span class="esymbol">:=</span> <span class="ekeyword">False</span>
+				<span class="ekeyword">end</span>
+				<span class="elocal">i</span> <span class="esymbol">:=</span> <span class="elocal">i</span> <a class="esymbol" href="../elks/integer_32.html#f_plus">+</a> <span class="enumber">1</span>
+			<span class="ekeyword">end</span>
+			<span class="ekeyword">Result</span> <span class="esymbol">:=</span> <span class="elocal">ban</span>
+		<span class="ekeyword">end</span>
+	
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../dijsktra/grafo.html">GRAFO</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="grafo_chart.html">Chart</a>
+<a class="nav class" href="grafo_links.html">Relations</a>
+<span class="nav class selected">Text</span>
+<a class="nav class" href="grafo_flat.html">Flat</a>
+<span class="nav class goto">Go to: <input name="c" value="grafo"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+
